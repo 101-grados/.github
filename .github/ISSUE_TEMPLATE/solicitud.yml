@@ -1,6 +1,5 @@
 name: Solicitud de usuario
 description: Un pedido o un problema que reportó alguien que usa el producto
-labels: ['solicitud']
 body:
   - type: markdown
     attributes:
