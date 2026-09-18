@@ -1,0 +1,43 @@
+name: Solicitud de usuario
+description: Un pedido o un problema que reportó alguien que usa el producto
+labels: ['solicitud']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cuando este issue se cierre y el cambio llegue a producción, se avisa
+        **por correo** a las personas que aparezcan en «Solicitado por».
+
+  - type: input
+    id: solicitado-por
+    attributes:
+      label: Solicitado por
+      description: >
+        Una o varias personas, separadas por coma. Usa el alias del directorio
+        de la organización (`101-grados/gh-actions/requesters.json`) o el
+        correo completo.
+      placeholder: maria, juan, alguien@cliente.com
+    validations:
+      required: true
+
+  - type: textarea
+    id: pedido
+    attributes:
+      label: Qué pidió
+      description: En sus palabras, tal como lo contó.
+    validations:
+      required: true
+
+  - type: input
+    id: donde
+    attributes:
+      label: Dónde ocurre
+      placeholder: /management/pos-redemptions → diálogo "Crear premio nuevo"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **Antes de cerrar**: comenta `/aviso <texto>` con el mensaje que recibirá
+        la persona, en lenguaje de negocio. Si no hay `/aviso`, el correo usa el
+        título del issue.
