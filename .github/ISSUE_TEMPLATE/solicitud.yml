@@ -1,11 +1,15 @@
 name: Solicitud de usuario
 description: Un pedido o un problema que reportó alguien que usa el producto
+type: Feature
+projects: ["101-grados/1"]
 body:
   - type: markdown
     attributes:
       value: |
-        Cuando este issue se cierre y el cambio llegue a producción, se avisa
-        **por correo** a las personas que aparezcan en «Solicitado por».
+        Cuando este issue se cierre, se avisa **por correo** a las personas de
+        «Solicitado por». Si el pedido toca varios repos, este issue es el
+        padre y cada repo recibe un sub-issue («Tarea técnica»); el padre se
+        cierra solo cuando se cierra el último sub-issue.
 
   - type: input
     id: solicitado-por
@@ -33,10 +37,12 @@ body:
       label: Dónde ocurre
       placeholder: /management/pos-redemptions → diálogo "Crear premio nuevo"
 
-  - type: markdown
+  - type: textarea
+    id: aviso
     attributes:
-      value: |
-        ---
-        **Antes de cerrar**: comenta `/aviso <texto>` con el mensaje que recibirá
-        la persona, en lenguaje de negocio. Si no hay `/aviso`, el correo usa el
-        título del issue.
+      label: Mensaje para el aviso
+      description: >
+        Lo que leerá la persona en el correo, en lenguaje de negocio. Se puede
+        completar o cambiar hasta que se cierre el issue. Si queda vacío, el
+        correo usa el título. Un comentario `/aviso <texto>` tiene prioridad.
+      placeholder: Ya puedes escribir en el selector de sub-categorías para filtrarlas.

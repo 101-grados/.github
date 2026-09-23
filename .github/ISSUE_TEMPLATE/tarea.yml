@@ -1,0 +1,59 @@
+name: Tarea técnica
+description: La parte de un pedido que le toca a este repo (sub-issue de una Solicitud de usuario)
+type: Task
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Esta tarea es un **sub-issue**: la ejecuta una persona o un agente y se
+        cierra con `Closes #N` en el commit o el PR. No lleva «Solicitado por»:
+        el aviso por correo sale del issue padre, una sola vez, cuando se
+        cierran todas sus tareas.
+
+  - type: input
+    id: padre
+    attributes:
+      label: Issue padre
+      description: La Solicitud de usuario de la que sale esta tarea.
+      placeholder: 101-grados/lalaverse-project#1
+    validations:
+      required: true
+
+  - type: input
+    id: modulo
+    attributes:
+      label: App o módulo
+      description: Dónde dentro del repo, si el repo tiene varias apps.
+      placeholder: apps/nesforce · src/modules/awards
+
+  - type: textarea
+    id: alcance
+    attributes:
+      label: Alcance en este repo
+      description: Qué hay que hacer aquí, y solo aquí.
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      description: Una casilla por condición verificable.
+      value: |
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: fuera-de-alcance
+    attributes:
+      label: Fuera de alcance
+      description: Lo que resuelve otra tarea del mismo padre, para no duplicarlo.
+
+  - type: textarea
+    id: evidencia
+    attributes:
+      label: Evidencia
+      description: Archivos, endpoints, tablas o componentes existentes que la tarea toca.
+      placeholder: |
+        - src/modules/awards/awards.controller.ts — GET /awards
